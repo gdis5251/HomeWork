@@ -4,6 +4,12 @@
 #include <stdlib.h>
 #include <time.h>
 
+/*
+* æœ¬ç¨‹åºæ˜¯ç”¨æ¥å®ç°ä¸€ä¸ªçŒœæ•°å­—å°æ¸¸æˆï¼Œç›®çš„æ˜¯æ›´åŠ æ·±å…¥çš„äº†è§£å¾ªç¯å’Œå‡½æ•°çš„è¿ç”¨
+* éƒ­æ–‡å³°
+* 2018/9/28
+*/
+
 void menu(void)
 {
 	printf("*****************************************************\n");
@@ -20,23 +26,23 @@ void game(void)
 
 	while (1)
 	{
-		printf("ÇëÊäÈë²ÂµÄÊı×Ö£º");
+		printf("è¯·è¾“å…¥çŒœçš„æ•°å­—ï¼š");
 		int num;
 		scanf("%d", &num);
 
 		if (num == rnum)
 		{
-			printf("²Â¶ÔÁË£¡\n");
+			printf("çŒœå¯¹äº†ï¼\n");
 			break;
 		}
 		else if (num > rnum)
 		{
-			printf("²Â´óÁË£¡\n");
+			printf("çŒœå¤§äº†ï¼\n");
 
 		}
 		else
 		{
-			printf("²ÂĞ¡ÁË£¡\n");
+			printf("çŒœå°äº†ï¼\n");
 		}
 
 	}
@@ -50,12 +56,12 @@ int main(void)
 	srand((unsigned int)time(NULL));
 
 
-	//Ñ¡ÔñÊÇ·ñÒª½øĞĞÓÎÏ·
+	//é€‰æ‹©æ˜¯å¦è¦è¿›è¡Œæ¸¸æˆ
 	do
 	{
 		menu();
 
-		printf("ÇëÑ¡Ôñ£º");
+		printf("è¯·é€‰æ‹©ï¼š");
 
 		scanf("%d", &input);
 
@@ -66,10 +72,10 @@ int main(void)
 			break;
 		case 0:
 			input = 0;
-			printf("ÍË³öÓÎÏ·£¡\n");
+			printf("é€€å‡ºæ¸¸æˆï¼\n");
 			break;
 		default:
-			printf("ÊäÈë´íÎó£¬ÇëÖØĞÂÊäÈë\n");
+			printf("è¾“å…¥é”™è¯¯ï¼Œè¯·é‡æ–°è¾“å…¥\n");
 			break;
 		}
 	} while (input);
