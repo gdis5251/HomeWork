@@ -16,7 +16,7 @@
 void reverse_string(char *string)
 {
 
-	if (*string == '\0')
+	/*if (*string == '\0')
 	{
 		printf("%c ", *string);
 
@@ -25,9 +25,14 @@ void reverse_string(char *string)
 	else
 	{
 		reverse_string(string + 1);
-		printf("%c ", *(string));
-	}
+		printf("%c ", *(--string));
+	}*/
 	
+	if (*string++)
+	{
+		reverse_string(string);
+		printf("%c", *(--string));
+	}
 }
 
 int main(void)
