@@ -20,7 +20,7 @@ void DisplayBoard(char board[ROW][COL], int row, int col)
 		}
 		printf("\n");
 		if (i < row - 1)
-			printf("---------------\n");
+			printf("---------------------------\n");
 
 	}
 }
@@ -38,6 +38,7 @@ void PlayerMove(char board[ROW][COL], int row, int col)
 		if (x >= row && x <= 1 && y >= col && y <= 1)
 		{
 			printf("输入错误！请重新输入：\n");
+			continue;
 		}
 		//如果用户选择的坐标为空，则将空格改为X，否则提示输入错误
 		if (board[x-1][y-1] == ' ')
