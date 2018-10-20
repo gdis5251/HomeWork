@@ -4,12 +4,12 @@
 #include <stdlib.h>
 
 /*
-* ����һ�����飬
-  ʵ�ֺ���init()��ʼ�����顢
-  ʵ��empty()������顢
-  ʵ��reverse()�����������Ԫ�ص����á�
-  Ҫ���Լ���ƺ����Ĳ���������ֵ��
-* ���ķ�
+* 创建一个数组，
+  实现函数init()初始化数组、
+  实现empty()清空数组、
+  实现reverse()函数完成数组元素的逆置。
+  要求：自己设计函数的参数，返回值。
+* 郭文峰
 * 2018/10/14
 */
 
@@ -19,23 +19,22 @@ void init(int arr[], int n)
 
 	for (i = 0; i < n; i++)
 	{
-		scanf("%d", &arr[i]);
+		arr[i] = i;
 	}
 }
 
 void reverse(int arr[], int n)
 {
-	int arr1[10];
-	int i = 0;
-
-	for (i = 0; i < n; i++)
+	int left = 0;
+	int right = sz - 1;
+	
+	while (left < right)
 	{
-		arr1[i] = arr[n - i - 1];
-	}
-
-	for (i = 0; i < n; i++)
-	{
-		arr[i] = arr1[i];
+		int temp = arr[left];
+		arr[left] = arr[right];
+		arr[right] = temp;
+		left++;
+		right--;
 	}
 
 }
@@ -54,9 +53,9 @@ int main(void)
 {
 	int arr[10];
 	int i = 0;
-
-	//ʵ�ֺ���init()��ʼ������
-	init(arr, 10);
+        int sz = sizeof(arr)/sizeof(arr[0]);
+	//实现函数init()初始化数组
+	init(arr, sz);
 
 	for (i = 0; i < 10; i++)
 	{
@@ -64,8 +63,8 @@ int main(void)
 	}
 	printf("\n");
 
-	//ʵ��reverse()�����������Ԫ�ص����á�
-	reverse(arr, 10);
+	//实现reverse()函数完成数组元素的逆置。
+	reverse(arr, sz);
 	
 	for (i = 0; i < 10; i++)
 	{
@@ -73,8 +72,8 @@ int main(void)
 	}
 	printf("\n");
 
-	//ʵ��empty()�������
-	empty(arr, 10);
+	//实现empty()清空数组
+	empty(arr, sz);
 
 	for (i = 0; i < 10; i++)
 	{
