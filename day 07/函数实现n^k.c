@@ -15,10 +15,6 @@ int ping_fang(int x, int y)
 	{
 		return 1;
 	}
-	else if (y == 1)
-	{
-		return x;
-	}
 	else
 	{
 		return x * ping_fang(x, y - 1);
