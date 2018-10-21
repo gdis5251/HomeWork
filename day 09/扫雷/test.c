@@ -43,26 +43,38 @@ void game()
 
 	//打印游戏面板
 	DisplayBoard(show, ROWS, COLS);
+	//第一步不被炸死
 	SafeMove(mine, show, ROWS, COLS);
 
-	if (CountShow == COUNT)
+	//如果面板上剩下的'*' 与地雷的总数相同时，玩家赢
+	if (CountShow(show, ROWS, COLS) == EASY_MODE)
 	{
+		printf("-------------------------\n");
 		DisplayBoard(mine, ROWS, COLS);
-		printf("玩家赢！\n");
+		printf("恭喜你！你赢了！\n");
 		return;
 	}
+	
+	/*DisplayBoard(mine, ROWS, COLS);
+	printf("\n");
+	printf("-------------------------\n");
+	printf("\n");*/
 	DisplayBoard(show, ROWS, COLS);
+	
 
 	while (1)
 	{
-		//判断玩家选择的坐标是不是地雷，若不是则展开附近地雷信息
+		//判断玩家选择的坐标是不是地雷，若是则返回1，若不是则展开附近地雷信息
 		is = FindMine(mine, show, ROWS, COLS);
-		if (CountShow == COUNT)
+		//如果面板上剩下的'*' 与地雷的总数相同时，玩家赢
+		if (CountShow(show, ROWS, COLS) == EASY_MODE)
 		{
+			printf("-------------------------\n");
 			DisplayBoard(mine, ROWS, COLS);
-			printf("玩家赢！\n");
+			printf("恭喜你!你赢了！\n");
 			break;
 		}
+		
 		if (is == 1)
 		{
 			printf("BOOM!!!!!!!!!!\n");
@@ -70,6 +82,11 @@ void game()
 			DisplayBoard(mine, ROWS, COLS);
 			break;
 		}
+
+	/*	DisplayBoard(mine, ROWS, COLS);
+		printf("\n");
+		printf("-------------------------\n");
+		printf("\n");*/
 		DisplayBoard(show, ROWS, COLS);
 
 	}

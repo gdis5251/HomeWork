@@ -13,7 +13,7 @@
 #define ROWS (ROW+2)
 #define COLS (COL+2)
 #define EASY_MODE 10
-#define COUNT 10
+
 
 int book[ROWS][COLS];
 
