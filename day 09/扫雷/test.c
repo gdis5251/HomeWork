@@ -29,8 +29,10 @@ void game()
 	char show[ROWS][COLS] = { 0 };
 	
 	//初始化mine 数组所有元素为'0',show 数组所有元素为'*'
-	Init(mine, show, ROWS, COLS);
-	
+	//Init(mine, show, ROWS, COLS);
+	Init(mine, ROWS, COLS, '0');
+	Init(show, ROWS, COLS, '*');
+
 	//设置地雷
 	setMine(mine, ROWS, COLS);
 

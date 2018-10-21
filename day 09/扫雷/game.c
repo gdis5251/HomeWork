@@ -2,10 +2,9 @@
 
 #include "game.h"
 
-void Init(char mine[ROWS][COLS], char show[ROWS][COLS],  int row, int col)
+void Init(char board[ROWS][COLS],   int row, int col, char ch)
 {
-	memset(&mine[0][0], '0', row*col*sizeof(mine[0][0]));
-	memset(&show[0][0], '*', row*col*sizeof(show[0][0]));
+	memset(&board[0][0], ch, row*col*sizeof(board[0][0]));
 }
 
 void DisplayBoard(char board[ROWS][COLS], int row, int col)

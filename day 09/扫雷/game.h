@@ -18,7 +18,7 @@
 int book[ROWS][COLS];
 
 void DisplayBoard(char board[ROWS][COLS], int row, int col);
-void Init(char mine[ROWS][COLS], char show[ROWS][COLS], int row, int col);
+void Init(char board[ROWS][COLS],  int row, int col, char ch);
 void setMine(char mine[ROWS][COLS], int row, int col);
 int FindMine(char mine[ROWS][COLS], char show[ROWS][COLS], int row, int col);
 int GetCount(char mine[ROWS][COLS], int x, int y);
