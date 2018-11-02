@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "获取一个数二进制序列中所有的偶数位和奇数位,分别输出二进制序列", "获取一个数二进制序列中所有的偶数位和奇数位,分别输出二进制序列\获取一个数二进制序列中所有的偶数位和奇数位,分别输出二进制序列.vcxproj", "{CCB65987-4A6A-4507-B279-6CF9F0E6DAA1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CCB65987-4A6A-4507-B279-6CF9F0E6DAA1}.Debug|Win32.ActiveCfg = Debug|Win32
+		{CCB65987-4A6A-4507-B279-6CF9F0E6DAA1}.Debug|Win32.Build.0 = Debug|Win32
+		{CCB65987-4A6A-4507-B279-6CF9F0E6DAA1}.Release|Win32.ActiveCfg = Release|Win32
+		{CCB65987-4A6A-4507-B279-6CF9F0E6DAA1}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
