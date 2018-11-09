@@ -16,6 +16,7 @@
 */
 int count = 0;
 
+//按位与1，如果等于1，则count++
 void  count_one_bits(unsigned int d)
 {
 	int i = 0;
@@ -26,20 +27,32 @@ void  count_one_bits(unsigned int d)
 		{
 			count++;
 		}
+		//让数据右移
+		//同时也可以让1左移
 		d = d >> 1;
+	}
+}
+
+//这样的算法可以每次循环可以清除一个最低位的1
+//最后只要统计循环了多少次即可
+
+void CountBits(unsigned int x_)
+{
+	while (x_)
+	{
+		x_ = x_ & (x_ - 1);
+		count++;
 	}
 }
 
 int main(void)
 {
-	int d = 0;
+	unsigned int d = 0;
 	
 	scanf("%d", &d);
 
-	//如果输入的数字为负数，则先加上符号为的1
-	
-
-	count_one_bits(d);
+	//count_one_bits(d);
+	CountBits(d);
 
 	printf("%d \n", count);
 

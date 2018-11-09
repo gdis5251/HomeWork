@@ -9,22 +9,29 @@
 * 2018/10/22
 */
 
-void print(int n)
-{
-	if (n > 9)
-	{
-		print(n / 10);
-	}
-	printf("%d  ", n % 10);
-}
 
+
+void PrintBinData(int data_)
+{
+	unsigned int flag_ = 0x80000000;
+
+	while (flag_)
+	{
+		if (flag_ & data_)
+			printf("1");
+		else
+			printf("0");
+		flag_ >>= 1;
+	}
+	printf("\n");
+}
 int main(void)
 {
-	int n = 0;
+	int data = 0;
+	printf("Please enter data: ");
+	scanf("%d", &data);
 
-	scanf("%d", &n);
-
-	print(n);
+	PrintBinData(data);
 
 	system("pause");
 	return 0;

@@ -15,13 +15,14 @@
 * 2018/10/23
 */
 
-int main(void)
+void PlayerNo()
 {
 	int a = 0;
 	int b = 0;
 	int c = 0;
 	int d = 0;
 	int e = 0;
+	unsigned int flag = 0;
 
 	//用枚举的方法来判断谁说的对
 	for (a = 1; a <= 5; a++)
@@ -34,34 +35,52 @@ int main(void)
 				{
 					for (e = 1; e <= 5; e++)
 					{
-						if ((2 == b && 3 != a) || (2 != b && 3 == a) == 1)
+						flag = 0;
+						if ((2 == b) + (3 == a) == 1 && \
+							(b == 2) + (e == 4) == 1 && \
+							(c == 1) + (d == 2) == 1 && \
+							(c == 5) + (d == 3) == 1 && \
+							(e == 4) + (a == 1) == 1 )
 						{
-							if ((2 == b && 4 != e) || (2 != b && 4 == e) == 1)
-							{
-								if ((1 == c && 2 != d) || (1 != c && 2 == d) == 1)
-								{
-									if ((5 == c && 3 != d) || (5 != c && 3 == d) == 1)
-									{
-										if ((4 == e && 1 != a) || (4 != e && 1 == a) == 1)
-										{
-											if (((a != b) && (a != c) && (a != d) && (a != e))
-												&& ((b != c) && (b != d) && (b != e))
-												&& ((c != d) && (c != e))
-												&& ((d != e)))
-											{
-												printf("a= %d, b= %d,c= %d,d= %d,e= %d\n", a, b, c, d, e);
-											}
-										}
+							flag |= (1 << (a - 1));
+							flag |= (1 << (b - 1));
+							flag |= (1 << (c - 1));
+							flag |= (1 << (d - 1));
+							flag |= (1 << (e - 1));
 
-									}
-								}
-							}
+							////方法一
+							//while (flag)
+							//{
+							//	if (!(flag & 1))
+							//	{
+							//		break;
+							//	}
+							//	flag >>= 1;
+							//}
+							//if (!flag)
+							//{
+							//	printf("a= %d, b= %d,c= %d,d= %d,e= %d\n", a, b, c, d, e);
+
+							//}
+
+
+							//方法二
+							if (flag == 1 || flag == 3 || flag == 7 || flag == 15 || flag == 31)
+								printf("a= %d, b= %d,c= %d,d= %d,e= %d\n", a, b, c, d, e);
+
+
+
 						}
 					}
 				}
 			}
 		}
 	}
+}
+
+int main(void)
+{
+	PlayerNo();
 	system("pause");
 	return 0;
 }

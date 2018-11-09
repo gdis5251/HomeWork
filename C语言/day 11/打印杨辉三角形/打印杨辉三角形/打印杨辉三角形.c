@@ -12,6 +12,51 @@
 * ¹ùÎÄ·å
 * 2018/10/23
 */
+void Yang(int n)
+{
+	int **p = (int **)malloc(sizeof(int *) * n);
+	int i = 0;
+	for (i = 0; i < n; i++)
+	{
+		p[i] = (int *)malloc(sizeof(int) * n);
+	}
+
+	for (i = 0; i < n; i++)
+	{
+		p[i][0] = 1;
+		p[i][i] = 1;
+	}
+
+	i = 2;
+	for (; i < n; i++)
+	{
+		int j = 1;
+		for (; j < i; j++)
+		{
+			p[i][j] = p[i - 1][j] + p[i - 1][j - 1];
+		}
+	}
+
+	
+
+	for (i = 0; i < n; i++)
+	{
+		int j = 0;
+		for (; j < n - i; j++)
+			printf(" ");
+		for (j = 0; j <= i; j++)
+		{
+			printf("%d ", p[i][j]);
+		}
+		printf("\n");
+	}
+
+	for (i = 0; i < n; i++)
+	{
+		free(p[i]);
+	}
+	free(p);
+}
 
 int main(void)
 {
@@ -19,7 +64,7 @@ int main(void)
 	int j = 0;
 	int n = 0;
 	int a[100][100] = { 0 };
-
+	printf("Please Enter:");
 	scanf("%d", &n);
 
 
@@ -44,6 +89,8 @@ int main(void)
 		}
 		printf("\n");
 	}
+
+	Yang(n);
 
 	system("pause");
 	return 0;

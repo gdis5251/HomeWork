@@ -22,33 +22,33 @@
 
 int count = 0;
 
-void count_one_bits(int d)
+int DiffBit (unsigned int x_, unsigned int y_)
 {
-	int i = 0;
-	for (i = 0; i < 32; i++)
+	int i_ = x_ ^ y_;
+	int count_ = 0;
+	unsigned int flag_ = 1;
+	while (flag_)
 	{
-		if ((d & 1) == 1)
-		{
-			count++;
-		}
-		d >>= 1;
-
+		if (flag_ & i_)
+			count_++;
+		flag_ <<= 1;
 	}
+	return count_;
 }
 
 int main(void)
 {
-	int d = 0;
-	int d1 = 0;
-	int d2 = 0;
+	unsigned int d_ = 0;
+	unsigned int d1_ = 0;
+	unsigned int d2_ = 0;
 	
-	scanf("%d%d", &d1, &d2);
+	scanf("%d%d", &d1_, &d2_);
 
-	d = d1 ^ d2;
+	
 
-	count_one_bits(d);
+	d_ = DiffBit(d1_, d2_);
 
-	printf("%d \n", count);
+	printf("%d \n", d_);
 
 	system("pause");
 	return 0;

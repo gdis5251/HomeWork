@@ -11,52 +11,50 @@
 * 2018/10/22 
 */
 
-int ji[16] = { 0 };
-int ou[16] = { 0 };
 
-void one_to_two(int d)
+
+void print(unsigned int data_)
 {
-	int i = 0;
-	int j = 0;
-	//这一步很关键！如果没有这一步，第一个循环会改变d的值
-	//到第二个循环的时候d的值就已经不是原来的值了
-	int d1 = d;
-
-	for (i = 0; i < 16; i++)
+	unsigned int flag_ = 0x80000000; //10000000000000000000000000000000
+	//因为是从左往右打印，所以这样初始化
+	printf("偶数Bits： ");
+	while (flag_)
 	{
-		ou[15 - i] = d & 1;
-		d >>= 2;
+		if (data_ & flag_)
+		{
+			printf("1 ");
+		}
+		else
+			printf("0 ");
+		flag_ >>= 2;
 	}
+	printf("\n");
 
-	for (i = 0; i < 16; i++)
+	printf("奇数Bits： ");
+	flag_ = 0x40000000;//01000000000000000000000000000000
+
+	while (flag_)
 	{
-		ji[15 - i] = (d1 & 2) / 2;
-		d1 >>= 2;
+		if (data_ & flag_)
+		{
+			printf("1 ");
+		}
+		else
+			printf("0 ");
+
+		flag_ >>= 2;
 	}
+	printf("\n");
+
 }
 
 int main(void)
 {
-	int i = 0;
-	int d = 0;
+	unsigned int data = 0;
+	printf("Please enter data:");
+	scanf("%d", &data);
 
-	scanf("%d", &d);
-
-	one_to_two(d);
-
-	printf("奇数二进制序列为：");
-	for (i = 0; i < 16; i++)
-	{
-		printf("%d  ", ji[i]);
-	}
-	printf("\n");
-
-	printf("偶数二进制序列为：");
-	for (i = 0; i < 16; i++)
-	{
-		printf("%d  ", ou[i]);
-	}
-	printf("\n");
+	print(data);
 
 	system("pause");
 	return 0;
