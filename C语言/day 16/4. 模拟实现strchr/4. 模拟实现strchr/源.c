@@ -24,10 +24,12 @@ char *my_strchr(char *str, char val)
 {
 	assert(str);// 判定str不是空指针
 
-	while (*str++)
+	//while (*str++)   这样写会出现最后一个字符还没判断就跳出了
+	while (*str)
 	{
-		if (val == *(str - 1))//如果找到字符第一次出现的位置，则返回它的地址
-			return str - 1;
+		if (val == *str)//如果找到字符第一次出现的位置，则返回它的地址
+			return str;
+		str++;
 	}
 
 	return NULL;
