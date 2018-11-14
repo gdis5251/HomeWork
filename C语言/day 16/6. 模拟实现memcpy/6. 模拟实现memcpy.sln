@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "6. 模拟实现memcpy", "6. 模拟实现memcpy\6. 模拟实现memcpy.vcxproj", "{82F0C1EC-9095-4C7C-A4CC-AEA1A80B26BF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{82F0C1EC-9095-4C7C-A4CC-AEA1A80B26BF}.Debug|Win32.ActiveCfg = Debug|Win32
+		{82F0C1EC-9095-4C7C-A4CC-AEA1A80B26BF}.Debug|Win32.Build.0 = Debug|Win32
+		{82F0C1EC-9095-4C7C-A4CC-AEA1A80B26BF}.Release|Win32.ActiveCfg = Release|Win32
+		{82F0C1EC-9095-4C7C-A4CC-AEA1A80B26BF}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
