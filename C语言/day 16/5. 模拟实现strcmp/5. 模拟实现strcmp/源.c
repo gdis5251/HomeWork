@@ -6,8 +6,8 @@
 #include <string.h>
 
 /*
-* Ä£ÄâÊµÏÖstrcmpº¯Êý
-* ¹ùÎÄ·å
+* æ¨¡æ‹Ÿå®žçŽ°strcmpå‡½æ•°
+* éƒ­æ–‡å³°
 * 2018/11/8
 */
 
@@ -20,7 +20,7 @@ int my_strcmp(const char *s1, const char *s2)
 		s1++;
 		s2++;
 	}
-
+        //find the differ str or they are same
 	if (*s1 == *s2)
 	{
 		return 0;
@@ -44,7 +44,7 @@ int main(void)
 	char *str3 = "Gerald is cool guy! HAHAHA!";
 	char *str4 = "Gerald";
 
-		//str1Óëstr2±È½Ï
+		//str1ä¸Žstr2æ¯”è¾ƒ
 	if ((my_strcmp(str1, str2)) == 0)
 		printf("str1 == str2\n");
 	else if ((my_strcmp(str1, str2)) > 0)
@@ -52,7 +52,7 @@ int main(void)
 	else
 		printf("str1 < str2\n");
 
-	//str1Óëstr3±È½Ï
+	//str1ä¸Žstr3æ¯”è¾ƒ
 	if ((my_strcmp(str1, str3)) == 0)
 		printf("str1 == str3\n");
 	else if ((my_strcmp(str1, str3)) > 0)
@@ -60,7 +60,7 @@ int main(void)
 	else
 		printf("str1 < str3\n");
 
-	//str1Óëstr4±È½Ï
+	//str1ä¸Žstr4æ¯”è¾ƒ
 	if ((my_strcmp(str1, str4)) == 0)
 		printf("str1 == str4\n");
 	else if ((my_strcmp(str1, str4)) > 0)
