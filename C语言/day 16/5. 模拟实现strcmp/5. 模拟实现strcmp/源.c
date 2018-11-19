@@ -20,12 +20,13 @@ int my_strcmp(const char *s1, const char *s2)
 		s1++;
 		s2++;
 	}
-        //find the differ str or they are same
-	if (*s1 == *s2)
+    //find the differ str or they are same
+	if (*(unsigned char*)s1 == *(unsigned char*)s2)//因为在计算是要发生整形提升
+												   //所以要强转一下
 	{
 		return 0;
 	}
-	else if (*s1 > *s2)
+	else if (*(unsigned char*)s1 > *(unsigned char*)s2)
 	{
 		return 1;
 	}
