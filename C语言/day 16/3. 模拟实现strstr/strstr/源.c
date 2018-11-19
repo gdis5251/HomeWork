@@ -16,43 +16,35 @@ char *my_strstr(const char *str1, const char *str2)
 {
 	assert(str1 && str2);
 
-	int flag = 0;
-	char *p = NULL;
-	int i = 0; 
+	char* cp = (char*)str1;
+	char* s1 = (char*)str1;
+	char* s2 = (char*)str2;
 
-	//循环试图判断str2是否是str1的子串
-	while (*str2)
+	while (*cp)
 	{
-		//如果str2已经有元素跟str1相同但是后面的元素却不同返回0
-		if (flag == 1 && *str1 != *str2)
-		{
-			return NULL;
-		}
+		//每次循环开始前，先让s1 s2归位
+		s1 = cp;
+		s2 = (char*)str2;
 
-		//如果str2开始有元素与str1相同，先让p存下当前地址
-		if (*str1 == *str2)
+		while (*s1 == *s2 && *s2)
 		{
-			flag = 1;
-			i++;
-			if (i == 1)
-			{
-				p = str1;
-			}
-			str1++;
-			str2++;
+			s1++;
+			s2++;
 		}
-		else
-			str1++;
+		if (*s2 == NUL)
+		{
+			return cp;
+		}
 		
-		//str2比较完，如果全部相同则返回第一个相同元素的地址
-		if (flag == 1 && *str2 == NUL)
-		{
-			return p;
-		}
-				
+		//让str1字符串向后走一位，继续查找
+		cp++;
 	}
 
 	return NULL;
+
+
+
+	
 }
 
 int main(void)

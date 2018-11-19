@@ -1,14 +1,13 @@
-﻿生成启动时间为 2018/11/7 21:16:40。
-     1>项目“F:\C语言\源代码\HomeWork\C语言\day 16\strstr\strstr\strstr.vcxproj”在节点 2 上(Build 个目标)。
+﻿生成启动时间为 2018/11/19 17:02:22。
+     1>项目“F:\C语言\源代码\HomeWork\C语言\day 16\3. 模拟实现strstr\strstr\strstr.vcxproj”在节点 2 上(Build 个目标)。
      1>ClCompile:
          F:\VS2010\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TC /analyze- /errorReport:prompt "源.c"
          源.c
-     1>f:\c语言\源代码\homework\c语言\day 16\strstr\strstr\源.c(39): warning C4090: “=”: 不同的“const”限定符
        Link:
-         F:\VS2010\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"F:\C语言\源代码\HomeWork\C语言\day 16\strstr\Debug\strstr.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"F:\C语言\源代码\HomeWork\C语言\day 16\strstr\Debug\strstr.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"F:\C语言\源代码\HomeWork\C语言\day 16\strstr\Debug\strstr.lib" /MACHINE:X86 "Debug\源.obj"
-         strstr.vcxproj -> F:\C语言\源代码\HomeWork\C语言\day 16\strstr\Debug\strstr.exe
-     1>已完成生成项目“F:\C语言\源代码\HomeWork\C语言\day 16\strstr\strstr\strstr.vcxproj”(Build 个目标)的操作。
+         F:\VS2010\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"F:\C语言\源代码\HomeWork\C语言\day 16\3. 模拟实现strstr\Debug\strstr.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"F:\C语言\源代码\HomeWork\C语言\day 16\3. 模拟实现strstr\Debug\strstr.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"F:\C语言\源代码\HomeWork\C语言\day 16\3. 模拟实现strstr\Debug\strstr.lib" /MACHINE:X86 "Debug\源.obj"
+         strstr.vcxproj -> F:\C语言\源代码\HomeWork\C语言\day 16\3. 模拟实现strstr\Debug\strstr.exe
+     1>已完成生成项目“F:\C语言\源代码\HomeWork\C语言\day 16\3. 模拟实现strstr\strstr\strstr.vcxproj”(Build 个目标)的操作。
 
 生成成功。
 
-已用时间 00:00:01.00
+已用时间 00:00:01.03
