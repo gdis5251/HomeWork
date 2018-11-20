@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "结构体 2018_11_20", "结构体 2018_11_20\结构体 2018_11_20.vcxproj", "{736039CD-8E0C-40C7-87BF-258DF5E1B0F7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{736039CD-8E0C-40C7-87BF-258DF5E1B0F7}.Debug|Win32.ActiveCfg = Debug|Win32
+		{736039CD-8E0C-40C7-87BF-258DF5E1B0F7}.Debug|Win32.Build.0 = Debug|Win32
+		{736039CD-8E0C-40C7-87BF-258DF5E1B0F7}.Release|Win32.ActiveCfg = Release|Win32
+		{736039CD-8E0C-40C7-87BF-258DF5E1B0F7}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
