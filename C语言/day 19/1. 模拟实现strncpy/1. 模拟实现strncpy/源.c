@@ -12,8 +12,9 @@
 * ¹ùÎÄ·å
 * 2018/11/21
 */
+typedef unsigned int size_t;
 
-void *MyStrncpy(char *dest, const char *src, int count)
+void *MyStrncpy(char *dest, const char *src, size_t count)
 {
 	assert(dest && src);
 
