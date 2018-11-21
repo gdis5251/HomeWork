@@ -14,9 +14,9 @@ int main()
 			count++;
 			printf("%d  ", year);
 		}
-		if (count % 10 == 0)
-			printf("\n");
 	}
+	printf("\n");
+	printf("%d\n", count);
 	system("pause");
 	return 0;
 }

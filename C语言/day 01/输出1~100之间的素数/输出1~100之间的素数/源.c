@@ -4,29 +4,35 @@
 #include <stdlib.h>
 #include "math.h"
 
+int isprime(int num)
+{
+	int i = 0;
+	for (i = 2; i <= sqrt(num); i++)
+	{
+		if (0 == num % i)
+			return 1;
+	}
+	return 0;
+}
+
 int main()
 {
-	printf("1~100之间的素数为：\n1\t2\t3\t");
-	int i = 4;
-	int count = 3;
-	int n;
-	int j;
-	for (i = 4; i <= 100; i++)
+	printf("The prime between 1 to 100:");
+
+	int i = 0;
+	int count = 0;
+
+	for (i = 2; i < 101; i++)
 	{
-		n = sqrt(i);
-		for (j = 2; j <= n; j++)
+		if (0 == isprime(i))
 		{
-			if (i % j == 0)
-				break;
-		}
-		if (j > n)
-		{
-			printf("%d\t", i);
+			printf("%d ", i);
 			count++;
 		}
-		if (count % 5 == 0)
-			printf("\n");
+
 	}
+	printf("\n");
+	printf("There are %d prime!\n", count);
 	system("pause");
 	return 0;
 }
