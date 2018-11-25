@@ -30,7 +30,7 @@ void ShowAllContacts(struct AddressList *p, int n);
 void DeleteAllContacts(struct AddressList *p, int n);
 void SortAllContacts(struct AddressList *p, int n);
 void SaveContactsToFile(struct AddressList *p, int n);
-void LoadContacts(struct AddressList *p, int n);
+int LoadContacts(struct AddressList *p, int n);
 
 
 #endif //__LIST_H_

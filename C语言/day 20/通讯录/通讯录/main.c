@@ -31,12 +31,13 @@ void menu()
 int main(void)
 {
 	int input = 1;
-	int number = 1; 
+	int number = 1;
 	struct AddressList al[1000] = { 0 };
-	struct AddressList *p = al;
+	int n = 0;
 	
 	while (input)
 	{
+		number = n + 1;
 		menu();
 		printf("Please Input Option:> ");
 		scanf("%d", &input);
@@ -128,6 +129,7 @@ int main(void)
 					printf("No Contacts!\n");
 					break;
 				}
+				
 				printf("\tName\tSex\tAge\tPhoneNumber\tAddress\n");
 				ShowAllContacts(al, number);
 				
@@ -149,7 +151,7 @@ int main(void)
 				
 				break;
 			case 9:
-				LoadContacts(al, number);
+				n = LoadContacts(al, number);
 				
 				break;
 			default:

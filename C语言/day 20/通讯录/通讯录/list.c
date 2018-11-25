@@ -46,7 +46,7 @@ void ModifyContacts(struct AddressList *p, int n)
 	printf("Please input contact address:>");
 	scanf("%s", p->addr);
 
-	printf("\tName\tSex\tAge\tPhoneNumber\tAddress\n");
+	printf("\tName\t\tSex\tAge\tPhoneNumber\tAddress\n");
 	printf("No.%d\t%s\t%s\t%d\t%s\t%s\n", n, p->name, p->sex, p->age, \
 		p->phnum, p->addr);
 }
@@ -99,35 +99,42 @@ void SortAllContacts(struct AddressList *p, int n)
 
 void SaveContactsToFile(struct AddressList *p, int n)
 {
-	FILE *pFile = fopen("AddressList.txt", "w+");
+	FILE *pFile = fopen("AddressList.txt", "wb");
 	if (pFile != NULL)
 	{
 		int i = 0;
 		for (i = 1; i < n; i++)
 		{
-			fwrite(&p[i], sizeof(struct AddressList), 1, pFile);
+			fwrite(p + i, sizeof(struct AddressList), 1, pFile);
 
 		}
+		printf("Save Success!\n");
 		fclose(pFile);
 	}
 }
 
-void LoadContacts(struct AddressList *p, int n)
+int LoadContacts(struct AddressList *p, int n)
 {
-	FILE *pFile = fopen("AddressList.txt", "r");
-	char name[20];
-	char sex[5];
-	int  age;
-	char phnum[12];
-	char addr[50];
+	FILE *pFile = fopen("AddressList.txt", "rb");
 	if (pFile != NULL)
 	{
+		fseek(pFile, 0, SEEK_END);
+		int size = ftell(pFile);
+		rewind(pFile);
 		int i = 0;
-		for (i = 1; i < n; i++)
+		int num = size / sizeof(struct AddressList);
+		for (i = 1; i <= num; i++)
 		{
-			if (5 == fscanf(pFile, "%s%s%d%s%s", name, sex, &age, phnum, addr))
-				printf("%s\t%s\t%d\t%s\t%s\n", name, sex, &age, phnum, addr);
+			fread(p + i, sizeof(struct AddressList), 1, pFile);
 		}
+		printf("Loading Success!\n");
+		printf("\tName\tSex\tAge\tPhoneNumber\tAddress\n");
+
+		ShowAllContacts(p, num + 1);
+
 		fclose(pFile);
+
+		return num;
 	}
+	
 }
