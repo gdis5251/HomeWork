@@ -24,6 +24,13 @@ struct AddressList
 
 void AddContacts(struct AddressList *p);
 void DeleteContacts(struct AddressList *p);
+void SearchContacts(struct AddressList *p, int n);
+void ModifyContacts(struct AddressList *p, int n);
+void ShowAllContacts(struct AddressList *p, int n);
+void DeleteAllContacts(struct AddressList *p, int n);
+void SortAllContacts(struct AddressList *p, int n);
+void SaveContactsToFile(struct AddressList *p, int n);
+void LoadContacts(struct AddressList *p, int n);
 
 
 #endif //__LIST_H_
