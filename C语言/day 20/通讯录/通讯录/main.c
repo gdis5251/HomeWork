@@ -37,10 +37,10 @@ int main(void)
 	
 	while (input)
 	{
-		number = n + 1;
 		menu();
 		printf("Please Input Option:> ");
 		scanf("%d", &input);
+
 
 		//按照用户输入的选项进行函数调用
 		switch (input)
@@ -124,7 +124,7 @@ int main(void)
 				break;
 			case 5:
 				//如果没有联系人，直接break
-				if (0 == number)
+				if (1 == number)
 				{
 					printf("No Contacts!\n");
 					break;
@@ -136,7 +136,7 @@ int main(void)
 				break;
 			case 6:
 				DeleteAllContacts(al, number);
-				number = 0;
+				number = 1;
 				printf("Delete Success!\n");
 				
 				break;
@@ -152,7 +152,8 @@ int main(void)
 				break;
 			case 9:
 				n = LoadContacts(al, number);
-				
+				number = n + 1;
+
 				break;
 			default:
 				printf("Input Error!\n");
