@@ -2,6 +2,7 @@
 
 #include <stdio.h>
 #include <windows.h>
+#include <assert.h>
 
 /*
 * 一个数组中只有两个数字是出现一次，
@@ -10,45 +11,55 @@
 * 郭文峰
 * 2018/11/5
 */
+typedef unsigned int size_t;
+
+void FindDiffer(int *p, int size)
+{
+	int i_ = 0;
+	int flag_ = 1;
+	int x = 0;
+
+	//先让所有数字抑或
+	//最后得到的一个数字就是两个只出现一次的数字的抑或
+	for (; i_ < size; i_++)
+	{
+		x ^= p[i_];
+	}
+
+	//找出两个数字第一个不同的比特位
+	while (!(x & flag_))
+	{
+		flag_ <<= 1;
+	}
+	
+
+	//根据找出的比特位，将这个数组划分成两个组
+	//那两个不一样的数字一定不在同一组
+	int sin1 = 0;
+	int sin2 = 0;
+	for (i_ = 0; i_ < size; i_++)
+	{
+		if (0 == (p[i_] & flag_))
+			sin1 ^= p[i_];
+		else if (0 != (p[i_] & flag_))
+			sin2 ^= p[i_];
+	}
+
+	printf("%d : %d\n", sin1, sin2);
+
+}
+
+
+
 
 int main(void)
 {
-	int stack[100] = { 0 };
-	int n = 0;
-	int top = 0;
-	int i = 0;
+	int arr[] = { 1, 2, 2, 4, 5, 6, 6, 4 };
+	size_t size = sizeof(arr)/sizeof(arr[0]);
 
-	//确定有多少个数字
-	scanf("%d", &n);
+	FindDiffer(arr, size);
+
 	
-	for (i = 0; i < n; i++)
-	{
-		scanf("%d", &stack[top]);
-		if (stack[top] == stack[top - 1])
-		{
-			//将两个相同的数字置零
-			stack[top] = 0;
-			stack[top - 1] = 0;
-
-			top -= 2;
-		}
-		top++;
-	}
-	top--;
-	
-	////遍历一遍栈找出不等于0的数字打印
-	//for (i = 0; i < n; i++)
-	//{
-	//	if (stack[i] != 0)
-	//		printf("%d  ", stack[i]);
-	//}
-
-	//只有两个数字是单独的，只需要打印两个数字即可
-	//这样减少了时间复杂度
-	printf("%d ", stack[top]);
-	printf("%d ", stack[top - 1]);
-
-	printf("\n");
 
 	system("pause");
 	return 0;
