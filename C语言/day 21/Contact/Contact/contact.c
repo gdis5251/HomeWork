@@ -4,6 +4,7 @@
 
 
 
+//初始化结构体
 contact_p initContact()
 {
 	contact_p ct = (contact_p)malloc(sizeof(contact_t) +INIT * sizeof(people_t));
@@ -23,26 +24,88 @@ contact_p initContact()
 
 
 
-void addPeople(contact_p ct, people_p cp)
+
+
+//如果内存不够需要进行扩容
+contact_p getMemory(contact_p ct)
 {
-	int i_ = 1;
-	contact_p p = NULL;
-	
-	
-	if (0 == ct->cap)
+	contact_p p_ = realloc(ct, sizeof(contact_t) + sizeof(people_t) * INIT * (ct->size / INIT + 1));
+	if (!p_)
 	{
-		p = realloc(ct, (sizeof(contact_t) + INIT * sizeof(people_t) * ++i_));//如果内存不够用，那就在开辟一个可以存INIT个人得通讯录
-		
-		if (!p)
+		perror("realloc");
+		exit(EXIT_FAILURE);
+	}
+
+	return p_;
+
+}
+
+
+//将文件里保存过得联系人，载入进来
+contact_p loadContact(contact_p ct)
+{
+	assert(ct);
+
+	unsigned int re_code_ = 0;
+	unsigned int n_ = 0;
+	
+	FILE *fp = fopen("Contacts.txt", "rb");
+	
+	if (NULL != fp)
+	{
+
+		fseek(fp, 0, SEEK_END);
+		ct->size = ftell(fp) / sizeof(people_t);
+		rewind(fp);
+
+		ct->cap = INIT - (ct->size);
+
+		if (ct->size > INIT)
 		{
-			perror("realloc");
-			exit(EXIT_FAILURE);
+			
+			ct = getMemory(ct);
+			ct->cap = INIT - (ct->size % INIT);//容量还剩下 INIT - (ct->size % INIT)
 		}
 
-		
-		ct = p;
-		ct->cap = INIT;
+
+		if (0 < ct->size)
+		{
+			re_code_ = fread(ct->people, sizeof(people_t), ct->size, fp);
+			if (ct->size == re_code_)//判断读完文件后，是不是正常退出
+			{
+				printf("Loading Success!\n");
+			}
+			else
+			{
+				if (feof(fp))
+				{
+					printf("Error reading Contacts.txt bin: unexpected end of file\n");
+				}
+				else if (ferror(fp))
+				{
+					printf("Error reading Contacts.txt\n");
+				}
+			}
+
+		}
+
+		fclose(fp);
+
 	}
+
+	return ct;
+}
+
+
+
+
+//添加联系人
+void addPeople(contact_p ct, people_p cp)
+{
+	assert(ct && cp);
+
+	cp = cp + (ct->size);//让柔性数组可以持续写入，消除数据覆盖的情况
+
 	
 
 	printf("Please input name :> ");
@@ -66,8 +129,13 @@ void addPeople(contact_p ct, people_p cp)
 
 
 
+
+
+//删除某个联系人，先列出所有联系人，在供用户来选择删除哪个
 int deletePeople(contact_p ct, people_p cp)
 {
+	assert(ct && cp);
+
 	int num_ = 0;
 	
 	listContact(ct, cp);
@@ -98,8 +166,12 @@ int deletePeople(contact_p ct, people_p cp)
 
 
 
+
+//查找某个联系人，用唯一标识电话来选择删除谁
 int searchPeople(contact_p ct, people_p cp)
 {
+	assert(ct && cp);
+
 	char tel[TEL_SIZE] = { NUL };
 	int i_ = 0;
 
@@ -130,8 +202,12 @@ int searchPeople(contact_p ct, people_p cp)
 
 
 
+//更新某个联系人，先列出所有联系人，用户选择完毕后
+//再让用户选择需要更改哪个属性
 int updatePeople(contact_p ct, people_p cp)
 {
+	assert(ct && cp);
+
 	int num_ = 0;
 	int ch_ = 1;
 	int quit_ = 1;
@@ -217,9 +293,11 @@ int updatePeople(contact_p ct, people_p cp)
 
 
 
-
+//列出所有联系人
 int listContact(contact_p ct, people_p cp)
 {
+	assert(ct && cp);
+
 	int i_ = 0;
 
 	if (0 == ct->size)
@@ -244,8 +322,14 @@ int listContact(contact_p ct, people_p cp)
 
 
 
+
+
+
+//清空所有联系人
 void emptyContact(contact_p ct)
 {
+	assert(ct);
+
 	ct->size = 0;
 	printf("Empty Contacts Success!\n");
 }
@@ -259,28 +343,50 @@ int strCmp(const void *x, const void *y)
 	assert(x && y);
 
 
-	return strcmp(*(char**)x, *(char**)y);
+	return strcmp((char*)x,(char*)y);
 }
 
 void sortContact(contact_p ct, people_p cp)
 {
-	int i_ = 0;
+	assert(ct && cp);
 
-	qsort(ct->people, ct->size, sizeof(people_p), strCmp);
+	//cp是一个结构体数组，所以在qsort的第三个参数要传结构体的大小
+	qsort(cp, ct->size, sizeof(people_t), strCmp);
+
+	listContact(ct, cp);
 	
 }
 
 
 
 
+//将通讯录里的信息写入到文件中
+void writeFile(contact_p ct, people_p cp)
+{
+	assert(ct && cp);
+
+	FILE *fp = fopen("Contacts.txt", "wb");
+
+	if (!fp)
+	{
+		perror("fopen");
+		exit(EXIT_FAILURE);
+	}
+
+	fwrite(cp, sizeof(people_t), ct->size, fp);
+
+	fclose(fp);
+}
 
 
 
 
 
 
-
+//释放动态创建的内存
 void destoryContact(contact_p ct)
 {
+	assert(ct);
+
 	free(ct);
 }

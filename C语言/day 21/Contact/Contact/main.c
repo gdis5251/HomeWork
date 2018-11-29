@@ -21,12 +21,15 @@ int main(void)
 {
 	int input = 1;
 	contact_p ct = initContact();
-	people_p cp = ct->people;
 	int d_flag = EXIT_FAILURE;
 	int f_flag = EXIT_FAILURE;
 	int u_flag = EXIT_FAILURE;
 	int l_flag = EXIT_FAILURE;
+	int w_flag = 0; //后面用来判断是否要写入文件
 
+
+	ct = loadContact(ct);//利用return 将开辟的地址传回来，不然会造成得不到地址（函数调用结束释放栈帧）
+	people_p cp = ct->people;
 
 
 	while (input)
@@ -42,9 +45,18 @@ int main(void)
 				
 				break;
 			case 1:
-				cp = cp + (ct->size);//让柔性数组可以持续写入，消除数据覆盖的情况
-				addPeople(ct, cp);
-				
+				if (0 == ct->cap)
+				{
+					ct = getMemory(ct);
+					cp = ct->people; //将cp移到柔性数组最后一个元素的下一个元素，防止数据覆盖
+					
+
+					ct->cap = INIT;
+				}
+
+				addPeople(ct, cp);				
+				w_flag = 1;
+
 				cp = ct->people;//让数组下标回归0
 
 				break;
@@ -55,6 +67,7 @@ int main(void)
 					break;
 				}
 
+				w_flag = 1;
 				cp = ct->people;//让数组下标回归0
 				
 				break;
@@ -78,6 +91,8 @@ int main(void)
 
 				cp = ct->people;//让数组下标回归0
 
+				w_flag = 1;
+
 				break;
 			case 5:
 				l_flag = listContact(ct, cp);
@@ -89,9 +104,14 @@ int main(void)
 				break;
 			case 6:
 				emptyContact(ct);
+				
+				w_flag = 1;
+
 				break;
 			case 7:
 				sortContact(ct, cp);
+				w_flag = 1;
+
 				break;
 			default:
 				printf("Error Input! One More Try!\n");
@@ -99,6 +119,10 @@ int main(void)
 		}
 
 	}
+
+	
+	if (1 == w_flag)
+		writeFile(ct, cp);
 
 	//free
 	destoryContact(ct);

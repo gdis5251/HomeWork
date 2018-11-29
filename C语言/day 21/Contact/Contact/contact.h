@@ -42,6 +42,8 @@ typedef struct contact
 
 
 contact_p initContact();
+contact_p getMemory(contact_p ct);
+contact_p loadContact(contact_p ct);
 void addPeople(contact_p ct, people_p cp);
 int deletePeople(contact_p ct, people_p cp);
 int searchPeople(contact_p ct, people_p cp);
@@ -49,6 +51,7 @@ int updatePeople(contact_p ct, people_p cp);
 int listContact(contact_p ct, people_p cp);
 void emptyContact(contact_p ct);
 void sortContact(contact_p ct, people_p cp);
+void writeFile(contact_p ct, people_p cp);
 void destoryContact(contact_p ct);
 
 
