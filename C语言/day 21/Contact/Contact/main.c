@@ -25,10 +25,10 @@ int main(void)
 	int f_flag = EXIT_FAILURE;
 	int u_flag = EXIT_FAILURE;
 	int l_flag = EXIT_FAILURE;
-	int w_flag = 0; //ºóÃæÓÃÀ´ÅÐ¶ÏÊÇ·ñÒªÐ´ÈëÎÄ¼þ
+	int w_flag = 0; //åŽé¢ç”¨æ¥åˆ¤æ–­æ˜¯å¦è¦å†™å…¥æ–‡ä»¶
 
 
-	ct = loadContact(ct);//ÀûÓÃreturn ½«¿ª±ÙµÄµØÖ·´«»ØÀ´£¬²»È»»áÔì³ÉµÃ²»µ½µØÖ·£¨º¯Êýµ÷ÓÃ½áÊøÊÍ·ÅÕ»Ö¡£©
+	ct = loadContact(ct);//åˆ©ç”¨return å°†å¼€è¾Ÿçš„åœ°å€ä¼ å›žæ¥ï¼Œä¸ç„¶ä¼šé€ æˆå¾—ä¸åˆ°åœ°å€ï¼ˆå‡½æ•°è°ƒç”¨ç»“æŸé‡Šæ”¾æ ˆå¸§ï¼‰
 	people_p cp = ct->people;
 
 
@@ -48,7 +48,7 @@ int main(void)
 				if (0 == ct->cap)
 				{
 					ct = getMemory(ct);
-					cp = ct->people; //½«cpÒÆµ½ÈáÐÔÊý×é×îºóÒ»¸öÔªËØµÄÏÂÒ»¸öÔªËØ£¬·ÀÖ¹Êý¾Ý¸²¸Ç
+					cp = ct->people; 
 					
 
 					ct->cap = INIT;
@@ -57,18 +57,18 @@ int main(void)
 				addPeople(ct, cp);				
 				w_flag = 1;
 
-				cp = ct->people;//ÈÃÊý×éÏÂ±ê»Ø¹é0
+				cp = ct->people;//è®©æ•°ç»„ä¸‹æ ‡å›žå½’0
 
 				break;
 			case 2:
 				d_flag = deletePeople(ct, cp);
-				if (EXIT_FAILURE == d_flag)//Èç¹ûÓÃ»§ÊäÈë´íÎóÖØÐÂÊäÈë
+				if (EXIT_FAILURE == d_flag)//å¦‚æžœç”¨æˆ·è¾“å…¥é”™è¯¯é‡æ–°è¾“å…¥
 				{
 					break;
 				}
 
 				w_flag = 1;
-				cp = ct->people;//ÈÃÊý×éÏÂ±ê»Ø¹é0
+				cp = ct->people;//è®©æ•°ç»„ä¸‹æ ‡å›žå½’0
 				
 				break;
 			case 3:
@@ -78,7 +78,7 @@ int main(void)
 					break;
 				}
 				
-				cp = ct->people;//ÈÃÊý×éÏÂ±ê»Ø¹é0
+				cp = ct->people;//è®©æ•°ç»„ä¸‹æ ‡å›žå½’0
 
 
 				break;
@@ -89,7 +89,7 @@ int main(void)
 					break;
 				}
 
-				cp = ct->people;//ÈÃÊý×éÏÂ±ê»Ø¹é0
+				cp = ct->people;//è®©æ•°ç»„ä¸‹æ ‡å›žå½’0
 
 				w_flag = 1;
 
@@ -99,7 +99,7 @@ int main(void)
 				if (EXIT_FAILURE == l_flag)
 					break;
 				
-				cp = ct->people;//ÈÃÊý×éÏÂ±ê»Ø¹é0
+				cp = ct->people;//è®©æ•°ç»„ä¸‹æ ‡å›žå½’0
 
 				break;
 			case 6:
