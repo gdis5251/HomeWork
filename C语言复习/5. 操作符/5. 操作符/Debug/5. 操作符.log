@@ -1,0 +1,13 @@
+﻿生成启动时间为 2018/12/6 20:17:03。
+     1>项目“F:\C语言\源代码\HomeWork\C语言复习\5. 操作符\5. 操作符\5. 操作符.vcxproj”在节点 2 上(Build 个目标)。
+     1>ClCompile:
+         F:\VS2010\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TC /analyze- /errorReport:prompt test.c
+         test.c
+       Link:
+         F:\VS2010\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"F:\C语言\源代码\HomeWork\C语言复习\5. 操作符\Debug\5. 操作符.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"F:\C语言\源代码\HomeWork\C语言复习\5. 操作符\Debug\5. 操作符.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"F:\C语言\源代码\HomeWork\C语言复习\5. 操作符\Debug\5. 操作符.lib" /MACHINE:X86 Debug\test.obj
+         5. 操作符.vcxproj -> F:\C语言\源代码\HomeWork\C语言复习\5. 操作符\Debug\5. 操作符.exe
+     1>已完成生成项目“F:\C语言\源代码\HomeWork\C语言复习\5. 操作符\5. 操作符\5. 操作符.vcxproj”(Build 个目标)的操作。
+
+生成成功。
+
+已用时间 00:00:00.97
