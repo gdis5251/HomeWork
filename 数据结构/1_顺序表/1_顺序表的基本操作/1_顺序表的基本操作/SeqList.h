@@ -3,8 +3,7 @@
 #pragma once
 
 #include <stdio.h>
-#include <assert.h>
-#include <stdlib.h>
+
 
 #define CAP 100 //起始容量为100
 
@@ -24,9 +23,10 @@ typedef struct SeqList
 void SeqListInit(SeqList *seqlist);
 
 //销毁
-void SeqListDestory(SeqList *seqlist);
+void SeqListDestory(SDataType *array);
 
 //扩容
+//调用此函数时应确定要扩容
 void CheckCapacity(SeqList *seqlist);
 
 //增加
@@ -35,6 +35,7 @@ void SeqListPushFornt(SeqList *seqlist, SDataType x);
 //尾插
 void SeqListPushBack(SeqList *seqlist, SDataType x);
 //中间插入
+//pos表示要插入的位置的下标
 void SeqListInsert(SeqList *seqlist, SDataType x, size_t pos);
 
 //删除
@@ -46,8 +47,8 @@ void SeqListPopBack(SeqList *seqlist);
 void SeqListErase(SeqList *seqlist, size_t pos);
 //删除第一个遇到的指定元素
 void SeqListRemove(SeqList *seqlist, SDataType x);
-//删除所有元素
-void SeqListRemoveAll(SeqList *seqlist);
+//删除所有x元素
+void SeqListRemoveAll(SeqList *seqlist, SDataType x);
 
 //查找
 //查找第一个遇到的指定元素，若找到返回下标，否则返回-1
