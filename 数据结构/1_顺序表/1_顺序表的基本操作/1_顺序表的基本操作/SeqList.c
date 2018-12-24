@@ -230,3 +230,132 @@ void SeqListRemoveAll(SeqList *seqlist, SDataType x)
 	seqlist->array = new_seqlist->array;
 
 }
+
+
+
+
+int SeqListFind(SeqList *seqlist, SDataType x)
+{
+	assert(seqlist);
+	assert(seqlist->array);
+
+	for (int i = 0; i < seqlist->size; i++)
+	{
+		if (x == seqlist->array[i])
+			return i;
+	}
+
+	//走到这里说明没找到
+	return -1;
+
+}
+
+
+
+
+
+//二分法查找
+//要求：时间复杂度：O(N);空间复杂度O(1)
+int SeqListBinaryFind(SeqList *seqlist, SDataType x)
+{
+	assert(seqlist);
+	assert(seqlist->array);
+
+	//left和right都代表数据下标
+	int left = 0;
+	int right = seqlist->size - 1;
+
+	while (left <= right)
+	{
+		int mid = (left + right) / 2;
+		if (seqlist->array[mid] == x)
+			return mid;
+		else if (seqlist->array[mid] > x)
+			right = mid - 1;
+		else
+			left = mid + 1;
+	}
+
+	//如果走到这里说明没有找到
+	return -1;
+}
+
+
+
+
+void SeqListModify(SeqList *seqlist, SDataType x, size_t pos)
+{
+	assert(seqlist);
+	assert(seqlist->array);
+	assert(pos >= 0 && pos < (size_t)seqlist->size);
+
+	seqlist->array[pos] = x;
+}
+
+
+
+
+void SeqListPrint(SeqList *seqlist)
+{
+	assert(seqlist);
+	assert(seqlist->array);
+
+
+	for (int i = 0; i < seqlist->size; i++)
+		printf("%d ", seqlist->array[i]);
+	printf("\n");
+}
+
+
+
+
+void swap(int *x, int *y)
+{
+	int temp = *x;
+	*x = *y;
+	*y = temp;
+}
+
+
+
+
+void SeqListBubbleSort(SeqList *seqlist)
+{
+	assert(seqlist);
+	assert(seqlist->array);
+
+	for (int end = seqlist->size - 1; end > 0; end--)
+	{
+		int index = 1;
+		for (int i = 0; i < end; i++)
+		{
+			if (seqlist->array[i] > seqlist->array[i + 1])
+			{
+				swap(seqlist->array + i, seqlist->array + i + 1);
+				index = 0;
+			}
+		}
+
+		if (1 == index)
+			break;
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
