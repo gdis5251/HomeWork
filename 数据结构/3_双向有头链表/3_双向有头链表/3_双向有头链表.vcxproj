@@ -66,9 +66,12 @@
   <ItemGroup>
     <ClCompile Include="DList.c" />
     <ClCompile Include="main.c" />
+    <ClCompile Include="OJ.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DList.h" />
+    <ClInclude Include="OJ.h" />
+    <ClInclude Include="Test.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

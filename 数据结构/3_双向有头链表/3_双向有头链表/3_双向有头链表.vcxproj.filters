@@ -21,9 +21,18 @@
     <ClCompile Include="DList.c">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="OJ.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DList.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="OJ.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Test.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
