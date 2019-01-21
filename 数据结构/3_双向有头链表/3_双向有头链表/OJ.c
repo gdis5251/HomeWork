@@ -201,3 +201,141 @@ ListNode* deleteDuplication(ListNode* pHead)
 	}
 	return result;
 }
+
+
+
+// 删除链表中等于给定值 val 的所有节点
+struct ListNode* removeElements(struct ListNode* head, int val) {
+	if (head == NULL)
+		return NULL;
+
+	struct ListNode *cur = head;
+	struct ListNode *prev = head;
+	struct ListNode *next = NULL;
+
+	while (cur != NULL)
+	{
+		//当头结点是要删除的结点时
+		if (head->val == val)
+		{
+			//如果这个链表只有一个结点且是要删除的结点时
+			if (head->next == NULL)
+			{
+				free(head);
+				head = NULL;
+				return NULL;
+			}
+			next = head->next;
+			free(head);
+			head = next;
+			cur = head;
+			continue;
+		}
+		else if (cur->val == val)
+		{
+			next = cur->next;
+			free(cur);
+			prev->next = next;
+			cur = prev;
+		}
+
+		prev = cur;
+		if (cur != NULL)
+			cur = cur->next;
+	}
+
+	return head;
+}
+
+
+
+
+//给定一个带有头结点 head 的非空单链表，返回链表的中间结点。如果有两个中间结点，则返回第二个中间结点
+struct ListNode* middleNode(struct ListNode* head) {
+	if (head == NULL)
+		return NULL;
+
+	struct ListNode *prev = head;
+	struct ListNode *cur = head;
+
+	while (cur != NULL)
+	{
+		if (prev->next == NULL)
+			return prev;
+		prev = prev->next;
+
+		cur = cur->next->next;
+		if (cur == NULL || cur->next == NULL)
+			return prev;
+	}
+
+	return prev;
+}
+
+
+
+
+
+//输入一个链表，输出该链表中倒数第k个结点
+ListNode* FindKthToTail(ListNode* pListHead, unsigned int k) {
+	if (pListHead == NULL)
+		return NULL;
+
+	ListNode *cur = pListHead;
+	unsigned int count = 0;
+
+	//统计一共有多少个结点
+	while (cur != NULL)
+	{
+		count++;
+		cur = cur->next;
+	}
+
+	if (k > count)
+		return NULL;
+
+	cur = pListHead;
+	while (count - k)
+	{
+		cur = cur->next;
+		count--;
+	}
+
+	return cur;
+}
+
+
+
+
+//链表的回文结构 
+//C++语法，用到了栈
+bool chkPalindrome(ListNode* A) {
+	if (A == NULL)
+		return true;
+
+	stack<int> st;
+
+	ListNode *cur = A;
+
+	while (cur != NULL)
+	{
+		if (st.empty())
+		{
+			st.push(cur->val);
+		}
+		else
+		{
+			if (st.top() == cur->val)
+				st.pop();
+			else
+				st.push(cur->val);
+		}
+
+		cur = cur->next;
+	}
+
+	if (st.empty())
+		return true;
+
+	return false;
+}
