@@ -1,0 +1,4 @@
+﻿  Main.c
+f:\c语言\源代码\homework\数据结构\6_二叉树\6_二叉树\main.c(8): warning C4013: “strlen”未定义；假设外部返回 int
+f:\c语言\源代码\homework\数据结构\6_二叉树\6_二叉树\main.c(9): warning C4101: “r”: 未引用的局部变量
+  6_二叉树.vcxproj -> F:\C语言\源代码\HomeWork\数据结构\6_二叉树\Debug\6_二叉树.exe
