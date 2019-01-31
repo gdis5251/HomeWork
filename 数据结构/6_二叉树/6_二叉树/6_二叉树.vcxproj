@@ -115,6 +115,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="BasisOJ.h" />
     <ClInclude Include="BinaryTree.h" />
     <ClInclude Include="CreateTree.h" />
   </ItemGroup>

@@ -21,6 +21,9 @@
     <ClInclude Include="CreateTree.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="BasisOJ.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
