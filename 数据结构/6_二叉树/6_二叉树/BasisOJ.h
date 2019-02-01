@@ -147,3 +147,150 @@ bool isSameTree(struct TreeNode* p, struct TreeNode* q) {
 		isSameTree(p->left, q->left) && \
 		isSameTree(p->right, q->right);
 }
+
+
+
+
+//5. 判断一个树是否是另一个树的子树
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     struct TreeNode *left;
+ *     struct TreeNode *right;
+ * };
+ */
+
+ //检查两棵树是否相同
+bool isSameTree(struct TreeNode* p, struct TreeNode* q) {
+	if (!p && !q)
+		return true;
+	if (!p || !q)
+		return false;
+
+	return p->val == q->val &&\
+		isSameTree(p->left, q->left) && \
+		isSameTree(p->right, q->right);
+}
+
+//前序遍历s树
+preorderTraversal(struct TreeNode *s, struct TreeNode *t)
+{
+	if (!s)
+		return false;
+
+	if (s->val == t->val && isSameTree(s, t))
+		return true;
+
+	bool left_ret = preorderTraversal(s->left, t);
+	if (left_ret)
+		return true;
+
+	return preorderTraversal(s->right, t);
+}
+
+
+bool isSubtree(struct TreeNode* s, struct TreeNode* t) {
+	if (t == NULL)
+		return true;
+
+	return preorderTraversal(s, t);
+}
+
+
+
+
+
+//6. 返回树的最大深度
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     struct TreeNode *left;
+ *     struct TreeNode *right;
+ * };
+ */
+int maxDepth(struct TreeNode* root) {
+	if (!root)
+		return 0;
+
+	int left = maxDepth(root->left);
+	int right = maxDepth(root->right);
+
+	return (left > right ? left : right) + 1;
+}
+
+
+
+
+//7.判断一个树是否是平衡二叉树
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     struct TreeNode *left;
+ *     struct TreeNode *right;
+ * };
+ */
+int maxDepth(struct TreeNode* root) {
+	if (!root)
+		return 0;
+
+	int left = maxDepth(root->left);
+	int right = maxDepth(root->right);
+
+	return (left > right ? left : right) + 1;
+}
+
+bool isBalanced(struct TreeNode* root) {
+	if (!root)
+		return true;
+
+	bool left = isBalanced(root->left);
+	if (!left)
+		return false;
+
+	bool right = isBalanced(root->right);
+	if (!right)
+		return false;
+
+	int leftDepth = maxDepth(root->left);
+	int rightDepth = maxDepth(root->right);
+
+	int diff = leftDepth - rightDepth;
+	if (diff >= -1 && diff <= 1)
+		return true;
+
+	return false;
+}
+
+
+
+
+//8. 判断一棵树是否对称
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     struct TreeNode *left;
+ *     struct TreeNode *right;
+ * };
+ */
+bool isMirror(struct TreeNode *p, struct TreeNode *q)
+{
+	if (!p && !q)
+		return true;
+
+	if (!p || !q)
+		return false;
+
+	return p->val == q->val &&\
+		isMirror(p->left, q->right) && \
+		isMirror(p->right, q->left);
+}
+bool isSymmetric(struct TreeNode* root) {
+	if (!root)
+		return true;
+
+	return isMirror(root->left, root->right);
+}
