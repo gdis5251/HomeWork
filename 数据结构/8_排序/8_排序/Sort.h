@@ -325,15 +325,38 @@ void BubbleSort(int *array, int size)
 
 //时间复杂度
 //最好 | 平均 O(N * logN)
+//最坏 O(N^2)
 
 //空间复杂度
+//空间耗在递归的调用栈上
+//最好O(logN)
+//最坏O(N)
 //二叉树的深度
-int Parition(int *array, int left, int right)
+
+//稳定性：不稳定partition不能保证其稳定性
+
+
+//在选基准值的问题上
+//最右或最左，容易让快排退化成最坏情况
+
+//其他选基准值办法
+//1）三数取中
+//mid = (left + right) / 2
+//在array[left, mid, right] 中选一个中间大小的数作为基准值
+//然后将基准值交换到最右侧或最左侧
+//再partition
+
+//2）在数组中随便选一个数然后交换到最边
+
+//Hover法
+int Parition1(int *array, int left, int right)
 {
 	int div = left;
 	int i = left;
-	int j = right;
+	int j = right;//这里是一个坑点，一定要j = right 绝对不能right - 1
 
+	//基数在右面，左先走
+	//基数在左面，右先走
 	while (i < j)
 	{
 		while (array[j] >= array[div] && i < j)
@@ -346,25 +369,186 @@ int Parition(int *array, int left, int right)
 			Swap(&array[i], &array[j]);
 	}
 
-	//if (i == j)
-		Swap(&array[i], &array[div]);
+	Swap(&array[i], &array[div]);
 	
 	return i;
 }
+
+
+//挖坑法
+int Parition2(int *array, int left, int right)
+{
+	int pivot = array[left];
+	int begin = right; //右边先走
+	int end = left;
+
+	while (end < begin)
+	{
+
+		while (end < begin && array[begin] >= pivot)
+		{
+			begin--;
+		}
+		
+		//走到这里说明找到一个比基准值小的数字
+		//坑在array[end]处
+		array[end] = array[begin];
+		while (end < begin && array[end] <= pivot)
+		{
+			end++;
+		}
+		
+		//到这里说明找到了一个比基准值大的数字
+		//坑在array[begin]处
+		array[begin] = array[end];
+	}
+
+
+	array[begin] = pivot;
+
+	return begin;
+}
+
+
+
+//前后下标法
+int Parition3(int *array, int left, int right)
+{
+	int i = left;
+	int d = left;
+
+	while (i < right)
+	{
+		if (array[i] >= array[right])
+			i++;
+		else
+		{
+			Swap(&array[d], &array[i]);
+			i++;
+			d++;
+		}
+	}
+
+	Swap(&array[d], &array[right]);
+
+	return d;
+}
+
+
+
+//递归
 void _QuickSort(int *array, int left, int right)
 {
 	//终止条件
-	if (left >= right)
+	if (left >= right)//left > right 表示size == 0; left == right 表示 已经有序 size == 1
 		return;
 
 	int div;
-	div = Parition(array, left, right);
+	div = Parition3(array, left, right);
 
 	_QuickSort(array, left, div - 1);
 	_QuickSort(array, div + 1, right);
 }
 
+
+//非递归
+//c++
+#if 0
+void NQuickSort(int *array, int left, int right)
+{
+	std::stack<int> s;
+	s.push(right);
+	s.push(left);
+
+	int _left = -1;
+	int _right = -1;
+
+	while (!s.empty())
+	{
+		_left = s.top();
+		s.pop();
+		_right = s.top();
+		s.pop();
+
+		if (_left >= _right)
+			continue;
+
+		int d = partition(array, _left, _right);
+
+		s.push(_right);
+		s.push(d + 1);
+
+		s.push(d - 1);
+		s.push(_left);
+	}
+}
+#endif
+
+
+
 void QuickSort(int *array, int size)
 {
 	_QuickSort(array, 0, size - 1);
+}
+
+
+
+//归并排序
+//可以排序硬盘上的数据
+void Merge(int *array, int *extra, int left, int mid, int right)
+{
+	int left_index = left;
+	int right_index = mid;
+	int extra_index = 0;
+
+	while (left_index < mid && right_index < right)
+	{
+		if (array[left_index] <= array[right_index])
+		{
+			extra[extra_index++] = array[left_index++];
+		}
+		else
+			extra[extra_index++] = array[right_index++];
+	}
+
+	while (left_index < mid)
+	{
+		extra[extra_index++] = array[left_index++];
+	}
+
+	while (right_index < right)
+	{
+		extra[extra_index++] = array[right_index++];
+	}
+
+	for (int i = 0; i < extra_index; i++)
+	{
+		array[left + i] = extra[i];
+	}
+}
+
+
+void _MergeSort(int *array, int *extra, int left, int right)
+{
+	if (left >= right - 1)
+		return;
+
+	int mid = left + (right - left) / 2;
+
+	_MergeSort(array, extra, left, mid);
+	_MergeSort(array, extra, mid, right);
+
+	Merge(array, extra, left, mid, right);
+}
+
+void MergeSort(int *array, int size)
+{
+	int *extra = (int *)malloc(sizeof(int) * size);
+	if (!extra)
+		exit(EXIT_FAILURE);
+
+	_MergeSort(array, extra, 0, size);
+	
+	free(extra);
+	extra = NULL;
 }

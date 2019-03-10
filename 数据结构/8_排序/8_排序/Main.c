@@ -7,7 +7,7 @@ int main(void)
 	
 	PrintArray(array, size);
 
-	QuickSort(array, size);
+	MergeSort(array, size);
 
 	PrintArray(array, size);
 
